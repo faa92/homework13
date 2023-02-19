@@ -71,6 +71,20 @@ public class IntList {
         }
         return -1;
     }
+    public void sort () {
+        if (fieldList.length == 0 || fieldList == null){
+            throw new IllegalArgumentException("Object is empty");
+        }
+        for (int i = 0; i < fieldList.length - 1; i++) {
+            for (int j = 0; j < fieldList.length - 1 - i; j++) {
+                if (fieldList[j] > fieldList[j + 1]) {
+                    int swap = fieldList[j];
+                    fieldList[j] = fieldList[j + 1];
+                    fieldList[j + 1] = swap;
+                }
+            }
+        }
+    }
 
 
 
