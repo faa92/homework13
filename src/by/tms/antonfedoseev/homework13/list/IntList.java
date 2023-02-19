@@ -1,13 +1,9 @@
 package by.tms.antonfedoseev.homework13.list;
-
 import java.util.Arrays;
-
 public class IntList {
     private int[] fieldList;
-
     public IntList() {
     }
-
     public IntList(int[] arr) {
         fieldList = Arrays.copyOf(arr, arr.length);
     }
@@ -22,14 +18,12 @@ public class IntList {
         }
         return fieldList[index];
     }
-
     public int set(int index, int element) {
         int[] arr = new int[fieldList.length];
         System.arraycopy(fieldList, 0, arr, 0, fieldList.length);
         arr[index] = element;
         return fieldList[index];
     }
-
     public int size() {
         return fieldList.length;
     }
@@ -37,6 +31,7 @@ public class IntList {
     public void add(int element) {
         int[] addElementArray = Arrays.copyOf(fieldList, fieldList.length + 1);
         addElementArray[addElementArray.length - 1] = element;
+        fieldList = addElementArray;
     }
 
     public int remove(int index) {
@@ -44,6 +39,7 @@ public class IntList {
         System.arraycopy(fieldList, 0, arr, 0, index);
         System.arraycopy(fieldList, index + 1, arr, index, fieldList.length - index - 1);
         int removeElement = fieldList[index];
+        fieldList = arr;
         return removeElement;
     }
 
@@ -68,7 +64,6 @@ public class IntList {
         }
         return newList;
     }
-
     public int lastIndexOf(int element) {
         if (fieldList.length == 0 || fieldList == null) {
             throw new IllegalArgumentException("Object is empty");
@@ -80,7 +75,6 @@ public class IntList {
         }
         return -1;
     }
-
     public void sort() {
         if (fieldList.length == 0 || fieldList == null) {
             throw new IllegalArgumentException("Object is empty");
@@ -95,6 +89,4 @@ public class IntList {
             }
         }
     }
-
-
 }
