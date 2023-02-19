@@ -4,7 +4,6 @@ import java.util.Arrays;
 
 public class IntList {
 
-
     protected int[] fieldList;
 
     public IntList () {
@@ -40,17 +39,30 @@ public class IntList {
         addElementArray [addElementArray.length - 1] = element;
         System.out.println(Arrays.toString(addElementArray));
     }
-    public int remove (int index) {
+
+    public int remove(int index) {
         int[] arr = new int[fieldList.length - 1];
-        System.arraycopy(fieldList,0,arr,0,index);
-        System.arraycopy(fieldList, index + 1, arr, index, fieldList.length - index -1);
+        System.arraycopy(fieldList, 0, arr, 0, index);
+        System.arraycopy(fieldList, index + 1, arr, index, fieldList.length - index - 1);
         int removeElement = fieldList[index];
 //        System.out.println(Arrays.toString(fieldList));
 //        System.out.println(Arrays.toString(arr));
 //        System.out.println(removeElement);
-        return removeElement ;
+        return removeElement;
     }
-    public IntList subList (int startIndexInclusive, int endIndexExclusive) {
+
+    public IntList subList(int startIndexInclusive) {
+        if (startIndexInclusive < 0 || startIndexInclusive > fieldList.length) {
+            throw new IllegalArgumentException("Not existent start index!");
+        }
+        IntList newIntList = new IntList(new int[0]);
+        for (int i = startIndexInclusive; i < fieldList.length; i++) {
+            newIntList.add(fieldList[i]);
+        }
+        return newIntList;
+    }
+
+    public IntList subList(int startIndexInclusive, int endIndexExclusive) {
         if (startIndexInclusive < 0 || endIndexExclusive > fieldList.length || startIndexInclusive > endIndexExclusive) {
             throw new IllegalArgumentException("Not existent index!");
         }
