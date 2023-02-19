@@ -45,14 +45,33 @@ public class IntList {
         System.arraycopy(fieldList,0,arr,0,index);
         System.arraycopy(fieldList, index + 1, arr, index, fieldList.length - index -1);
         int removeElement = fieldList[index];
-        System.out.println(Arrays.toString(fieldList));
-        System.out.println(Arrays.toString(arr));
-        System.out.println(removeElement);
+//        System.out.println(Arrays.toString(fieldList));
+//        System.out.println(Arrays.toString(arr));
+//        System.out.println(removeElement);
         return removeElement ;
     }
-//    public IntList subList (int startIndexInclusive, int endIndexExclusive) {
-//
-//    }
+    public IntList subList (int startIndexInclusive, int endIndexExclusive) {
+        if (startIndexInclusive < 0 || endIndexExclusive > fieldList.length || startIndexInclusive > endIndexExclusive) {
+            throw new IllegalArgumentException("Not existent index!");
+        }
+        IntList newList = new IntList(new int[0]);
+        for (int i = startIndexInclusive; i < endIndexExclusive; i++) {
+            newList.add(fieldList[i]);
+        }
+        return newList;
+    }
+    public int lastIndexOf (int element) {
+        if (fieldList.length == 0 || fieldList == null) {
+            throw new IllegalArgumentException("Object is empty");
+        }
+        for (int i = fieldList.length - 1; i > 0; i--) {
+            if (fieldList[i] == element) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
 
 
 
