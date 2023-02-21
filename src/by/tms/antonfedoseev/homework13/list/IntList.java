@@ -1,90 +1,81 @@
 package by.tms.antonfedoseev.homework13.list;
 import java.util.Arrays;
 public class IntList {
-    private int[] fieldList;
+    private int[] intArray = new int[0];
     public IntList() {
     }
     public IntList(int[] arr) {
-        fieldList = Arrays.copyOf(arr, arr.length);
+        intArray = Arrays.copyOf(arr, arr.length);
     }
 
     public String toString() {
-        return Arrays.toString(fieldList);
+        return Arrays.toString(intArray);
     }
 
     public int get(int index) {
-        if (index >= fieldList.length || index < 0) {
+        if (index >= intArray.length || index < 0) {
             throw new IllegalArgumentException("Not existent index!");
         }
-        return fieldList[index];
+        return intArray[index];
     }
     public int set(int index, int element) {
-        int[] arr = new int[fieldList.length];
-        System.arraycopy(fieldList, 0, arr, 0, fieldList.length);
-        arr[index] = element;
-        return fieldList[index];
+        if (index > intArray.length) {
+            throw new IllegalArgumentException("Index out of bounds");
+        }
+        int pastElement = 0;
+        for (int i = 0; i < intArray.length; i++) {
+            if (index == i) {
+                pastElement = intArray[i];
+                intArray[i] = element;
+            }
+        }
+        return pastElement;
     }
     public int size() {
-        return fieldList.length;
+        return intArray.length;
     }
 
     public void add(int element) {
-        int[] addElementArray = Arrays.copyOf(fieldList, fieldList.length + 1);
+        int[] addElementArray = Arrays.copyOf(intArray, intArray.length + 1);
         addElementArray[addElementArray.length - 1] = element;
-        fieldList = addElementArray;
+        intArray = addElementArray;
     }
 
     public int remove(int index) {
-        int[] arr = new int[fieldList.length - 1];
-        System.arraycopy(fieldList, 0, arr, 0, index);
-        System.arraycopy(fieldList, index + 1, arr, index, fieldList.length - index - 1);
-        int removeElement = fieldList[index];
-        fieldList = arr;
+        int[] arr = new int[intArray.length - 1];
+        System.arraycopy(intArray, 0, arr, 0, index);
+        System.arraycopy(intArray, index + 1, arr, index, intArray.length - index - 1);
+        int removeElement = intArray[index];
+        intArray = arr;
         return removeElement;
     }
 
     public IntList subList(int startIndexInclusive) {
-        if (startIndexInclusive < 0 || startIndexInclusive > fieldList.length) {
-            throw new IllegalArgumentException("Not existent start index!");
-        }
-        IntList newIntList = new IntList(new int[0]);
-        for (int i = startIndexInclusive; i < fieldList.length; i++) {
-            newIntList.add(fieldList[i]);
-        }
-        return newIntList;
+        return subList(startIndexInclusive, intArray.length);
     }
 
     public IntList subList(int startIndexInclusive, int endIndexExclusive) {
-        if (startIndexInclusive < 0 || endIndexExclusive > fieldList.length || startIndexInclusive > endIndexExclusive) {
+        if (startIndexInclusive < 0 || endIndexExclusive > intArray.length || startIndexInclusive > endIndexExclusive) {
             throw new IllegalArgumentException("Not existent index!");
         }
-        IntList newList = new IntList(new int[0]);
-        for (int i = startIndexInclusive; i < endIndexExclusive; i++) {
-            newList.add(fieldList[i]);
-        }
+        IntList newList = new IntList(Arrays.copyOfRange(intArray, startIndexInclusive, endIndexExclusive));
         return newList;
     }
     public int lastIndexOf(int element) {
-        if (fieldList.length == 0 || fieldList == null) {
-            throw new IllegalArgumentException("Object is empty");
-        }
-        for (int i = fieldList.length - 1; i > 0; i--) {
-            if (fieldList[i] == element) {
+        for (int i = intArray.length - 1; i > 0; i--) {
+            if (intArray[i] == element) {
                 return i;
             }
         }
         return -1;
     }
     public void sort() {
-        if (fieldList.length == 0 || fieldList == null) {
-            throw new IllegalArgumentException("Object is empty");
-        }
-        for (int i = 0; i < fieldList.length - 1; i++) {
-            for (int j = 0; j < fieldList.length - 1 - i; j++) {
-                if (fieldList[j] > fieldList[j + 1]) {
-                    int swap = fieldList[j];
-                    fieldList[j] = fieldList[j + 1];
-                    fieldList[j + 1] = swap;
+        for (int i = 0; i < intArray.length - 1; i++) {
+            for (int j = 0; j < intArray.length - 1 - i; j++) {
+                if (intArray[j] > intArray[j + 1]) {
+                    int swap = intArray[j];
+                    intArray[j] = intArray[j + 1];
+                    intArray[j + 1] = swap;
                 }
             }
         }

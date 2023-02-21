@@ -9,7 +9,7 @@ public class HomeWork13 {
         Scanner scanner = new Scanner(System.in);
         IntList list = new IntList(new int[]{1, 9, 3, 6, 5, 4, 7, 8, 2, 10});
         do {
-            System.out.println("""
+            System.out.println("\n" + """
                     1. toString()
                     2. get()
                     3. set()
@@ -62,12 +62,11 @@ public class HomeWork13 {
                     int indexStart = scanner.nextInt();
                     System.out.println("Enter end index: ");
                     int indexEnd = scanner.nextInt();
-                    System.out.println(list.subList(indexStart, indexEnd));
+                    System.out.println("New list: " + list.subList(indexStart, indexEnd));
                 }
                 case 8 -> {
                     System.out.println("Enter start index: ");
                     int index = scanner.nextInt();
-                    System.out.println(list.subList(index));
                     System.out.println("New list: " + list.subList(index));
                 }
                 case 9 -> {
