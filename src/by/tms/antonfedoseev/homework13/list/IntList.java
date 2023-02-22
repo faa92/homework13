@@ -1,9 +1,12 @@
 package by.tms.antonfedoseev.homework13.list;
 import java.util.Arrays;
 public class IntList {
-    private int[] intArray = new int[0];
+    private int[] intArray;
+
     public IntList() {
+        intArray = new int[0];
     }
+
     public IntList(int[] arr) {
         intArray = Arrays.copyOf(arr, arr.length);
     }
@@ -19,16 +22,11 @@ public class IntList {
         return intArray[index];
     }
     public int set(int index, int element) {
-        if (index > intArray.length) {
+        if (index > intArray.length || index < 0) {
             throw new IllegalArgumentException("Index out of bounds");
         }
-        int pastElement = 0;
-        for (int i = 0; i < intArray.length; i++) {
-            if (index == i) {
-                pastElement = intArray[i];
-                intArray[i] = element;
-            }
-        }
+        int pastElement = intArray[index];
+        intArray[index] = element;
         return pastElement;
     }
     public int size() {
@@ -42,6 +40,9 @@ public class IntList {
     }
 
     public int remove(int index) {
+        if (index > intArray.length || index < 0) {
+            throw new IllegalArgumentException("Index out of bounds");
+        }
         int[] arr = new int[intArray.length - 1];
         System.arraycopy(intArray, 0, arr, 0, index);
         System.arraycopy(intArray, index + 1, arr, index, intArray.length - index - 1);
@@ -62,7 +63,7 @@ public class IntList {
         return newList;
     }
     public int lastIndexOf(int element) {
-        for (int i = intArray.length - 1; i > 0; i--) {
+        for (int i = intArray.length - 1; i > -1; i--) {
             if (intArray[i] == element) {
                 return i;
             }
