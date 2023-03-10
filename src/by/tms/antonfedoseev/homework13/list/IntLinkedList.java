@@ -4,9 +4,8 @@ public class IntLinkedList implements IntList {
     private IntLinkedNode headNode;
 
     IntLinkedList() {
-
     }
-
+    @Override
     public String toString() {
         return null;
     }
@@ -41,4 +40,5 @@ public class IntLinkedList implements IntList {
     public int lastIndexOf(int element) {
         return 0;
     }
+
 }

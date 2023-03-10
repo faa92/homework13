@@ -1,21 +1,25 @@
 package by.tms.antonfedoseev.homework13.list;
 
 public class IntLinkedNode {
-    private int element;
-    private IntLinkedNode nextNode = null;
+    private int element;        // ОДИН ЭЛЕМЕНТ СПИСКА
+    private IntLinkedNode nextNode;     // АДРЕС СЛЕДУЮЩЕГО ЭЛЕМЕНТА СПИСКА (посл объект списка =null)
+
 
     int getElement() {
-        return 0;
+        return element;
     }
 
     void setElement(int element) {
+        this.element = element;
     }
 
     IntLinkedNode getNextNode() {
-        return null;
+        return nextNode;
     }
 
     void setNextNode(IntLinkedNode nextNode) {
+        this.nextNode = nextNode;
     }
+
 
 }
