@@ -2,8 +2,10 @@ package by.tms.antonfedoseev.homework13.list;
 
 public class IntLinkedList implements IntList {
     private IntLinkedNode headNode;
+    private IntLinkedNode nextNode;
 
     IntLinkedList() {
+        headNode = null;
     }
     @Override
     public String toString() {
@@ -13,6 +15,7 @@ public class IntLinkedList implements IntList {
 
     @Override
     public int get(int index) {
+
         return 0;
     }
 
@@ -23,7 +26,13 @@ public class IntLinkedList implements IntList {
 
     @Override
     public int size() {
-        return 0;
+        headNode = nextNode;
+        int count = 0;
+        while (nextNode != null) {
+            count++;
+            nextNode = nextNode.getNextNode();
+        }
+        return count;
     }
 
     @Override
