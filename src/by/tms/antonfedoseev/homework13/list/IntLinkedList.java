@@ -4,9 +4,10 @@ public class IntLinkedList implements IntList {
     private IntLinkedNode headNode;
     private IntLinkedNode nextNode;
 
-    IntLinkedList() {
+    public IntLinkedList() {
         headNode = null;
     }
+
     @Override
     public String toString() {
         return String.valueOf(headNode);
