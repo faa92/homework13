@@ -21,7 +21,6 @@ public class IntLinkedList implements IntList {
         if (index < 0 || index > sizeList) {
             throw new IllegalArgumentException("This element does not exist");
         }
-
         nextNode = headNode;
         for (int i = 0; i <= index; i++) {
             returnElement = nextNode.getElement();
@@ -50,7 +49,7 @@ public class IntLinkedList implements IntList {
 
     @Override
     public int size() {
-        headNode = nextNode;
+        nextNode = headNode;
         int count = 0;
         while (nextNode != null) {
             count++;
@@ -70,7 +69,7 @@ public class IntLinkedList implements IntList {
             headNode = newNode;
         } else {
             while (nextNode.getNextNode() != null) {
-                nextNode = newNode.getNextNode();
+                nextNode = nextNode.getNextNode();
             }
             nextNode.setNextNode(nextNode);
         }
@@ -100,7 +99,7 @@ public class IntLinkedList implements IntList {
         for (int i = 0; i <= index; i++) {
             if (i + 1 == index) {
                 deleteElement = nextNode.getNextNode().getElement();
-                nextNode.setNextNode(nextNode.getNextNode().getNextNode());
+                nextNode.setNextNode(nextNode.getNextNode().getNextNode());             //!!!!!!!!!!!
                 break;
             }
             nextNode = nextNode.getNextNode();

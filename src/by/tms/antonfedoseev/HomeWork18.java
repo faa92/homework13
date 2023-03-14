@@ -10,6 +10,7 @@ public class HomeWork18 {
         IntLinkedList list = new IntLinkedList();
         do {
             System.out.println("""
+                                        
                     1. toString
                     2. add element
                     3. set element
@@ -20,40 +21,41 @@ public class HomeWork18 {
                     0. Exit \n""");
             System.out.print("Choose task: ");
             int task = scanner.nextInt();
+            Scanner sc = new Scanner(System.in);
             switch (task) {
                 case 1 -> {
                     System.out.println(list.toString());
                 }
                 case 2 -> {
-                    System.out.println("Enter new element: ");
-                    int element = scanner.nextInt();
+                    System.out.print("Enter new element: ");
+                    int element = sc.nextInt();
                     list.add(element);
                     System.out.println(list.toString());
                 }
                 case 3 -> {
                     System.out.print("Enter index of element: ");
-                    int index = scanner.nextInt();
+                    int index = sc.nextInt();
                     System.out.print("Enter element: ");
-                    int element = scanner.nextInt();
-                    System.out.println("Element [" + list.set(index, element) + "]");
+                    int element = sc.nextInt();
+                    System.out.print("Element [" + list.set(index, element) + "]");
                 }
                 case 4 -> {
                     System.out.println(list.size());
                 }
                 case 5 -> {
-                    System.out.println("Enter index of element: ");
-                    int index = scanner.nextInt();
+                    System.out.print("Enter index of element: ");
+                    int index = sc.nextInt();
                     System.out.println(list.get(index));
                 }
                 case 6 -> {
-                    System.out.println("Enter index of element to remove");
-                    int index = scanner.nextInt();
-                    System.out.println("Element [" + list.remove(index) + "] was removed");
+                    System.out.print("Enter index of element to remove");
+                    int index = sc.nextInt();
+                    System.out.print("Element [" + list.remove(index) + "] was removed");
                     System.out.println(list.toString());
                 }
                 case 7 -> {
                     System.out.print("Enter element: ");
-                    int element = scanner.nextInt();
+                    int element = sc.nextInt();
                     System.out.println(list.lastIndexOf(element));
                 }
                 case 0 -> {
