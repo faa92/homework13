@@ -2,7 +2,6 @@ package by.tms.antonfedoseev.homework13.list;
 
 public class IntLinkedList implements IntList {
     private IntLinkedNode headNode;
-    private IntLinkedNode nextNode;
 
     public IntLinkedList() {
         headNode = null;
@@ -16,6 +15,7 @@ public class IntLinkedList implements IntList {
 
     @Override
     public int get(int index) {
+        IntLinkedNode nextNode;
         int sizeList = size();
         int returnElement = 0;
         if (index < 0 || index > sizeList) {
@@ -31,6 +31,7 @@ public class IntLinkedList implements IntList {
 
     @Override
     public int set(int index, int element) {
+        IntLinkedNode nextNode;
         int sizeList = size();
         if (sizeList == 0 || index >= sizeList || index < 0) {
             throw new IllegalArgumentException("This element does not exist or there is no element at this index");
@@ -49,6 +50,7 @@ public class IntLinkedList implements IntList {
 
     @Override
     public int size() {
+        IntLinkedNode nextNode;
         nextNode = headNode;
         int count = 0;
         while (nextNode != null) {
@@ -60,6 +62,7 @@ public class IntLinkedList implements IntList {
 
     @Override
     public void add(int element) {
+        IntLinkedNode nextNode;
         IntLinkedNode newNode = new IntLinkedNode();
         newNode.setElement(element);
 
@@ -71,12 +74,13 @@ public class IntLinkedList implements IntList {
             while (nextNode.getNextNode() != null) {
                 nextNode = nextNode.getNextNode();
             }
-            nextNode.setNextNode(nextNode);
+            nextNode.setNextNode(newNode);
         }
     }
 
     @Override
     public int remove(int index) {
+        IntLinkedNode nextNode = new IntLinkedNode();
         int sizeList = size();
         int deleteElement = 0;
 
@@ -109,6 +113,7 @@ public class IntLinkedList implements IntList {
 
     @Override
     public int lastIndexOf(int element) {
+        IntLinkedNode nextNode = new IntLinkedNode();
         int sizeList = size();
         nextNode = headNode;
         int returnIndex = -1;

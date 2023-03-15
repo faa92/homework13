@@ -24,7 +24,9 @@ public class HomeWork18 {
             Scanner sc = new Scanner(System.in);
             switch (task) {
                 case 1 -> {
-                    System.out.println(list.toString());
+                    for (int i = 0; i < list.size(); i++) {
+                        System.out.println(list.get(i));
+                    }
                 }
                 case 2 -> {
                     System.out.print("Enter new element: ");
