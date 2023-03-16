@@ -40,35 +40,15 @@ public class IntLinkedList implements IntList {
 
     @Override
     public int get(int index) {
-        int sizeList = size();
-        int returnElement = 0;
-        if (index < 0 || index > sizeList) {
-            throw new IllegalArgumentException("This element does not exist");
-        }
-        IntLinkedNode nextNode = headNode;
-        for (int i = 0; i <= index; i++) {
-            returnElement = nextNode.getElement();
-            nextNode = nextNode.getNextNode();
-        }
-        return returnElement;
+        IntLinkedNode node = getNode(index);
+        return node.getElement();
     }
 
     @Override
     public int set(int index, int element) {
-        int sizeList = size();
-        if (sizeList == 0 || index >= sizeList || index < 0) {
-            throw new IllegalArgumentException("This element does not exist or there is no element at this index");
-        }
-        int returnElement = get(index);
-        IntLinkedNode nextNode;
-        nextNode = headNode;
-        for (int i = 0; i <= index; i++) {
-            if (i == index) {
-                returnElement = nextNode.getElement();
-                nextNode.setElement(element);
-            }
-            nextNode = nextNode.getNextNode();
-        }
+        IntLinkedNode node = getNode(index);
+        int returnElement = node.getElement();
+        node.setElement(element);
         return returnElement;
     }
 
