@@ -7,21 +7,45 @@ public class IntLinkedList implements IntList {
         headNode = null;
     }
 
+    private IntLinkedNode getNode(int index) {
+        if (index < 0) {
+            throw new IndexOutOfBoundsException();
+        }
+        IntLinkedNode node = headNode;
+        int i = 0;
+        while (i < index && node != null) {
+            node = node.getNextNode();
+            i++;
+        }
+        if (node == null) {
+            throw new IndexOutOfBoundsException();
+        }
+        return node;
+    }
+
     @Override
     public String toString() {
-        return String.valueOf(headNode);
+        if (headNode == null) {
+            return "[]";
+        }
+        StringBuilder builder = new StringBuilder("[");
+        IntLinkedNode node = headNode;
+        while (node.getNextNode() != null) {
+            builder.append(node.getElement()).append(", ");
+            node = node.getNextNode();
+        }
+        return builder.append(node.getElement()).append("]").toString();
     }
 
 
     @Override
     public int get(int index) {
-        IntLinkedNode nextNode;
         int sizeList = size();
         int returnElement = 0;
         if (index < 0 || index > sizeList) {
             throw new IllegalArgumentException("This element does not exist");
         }
-        nextNode = headNode;
+        IntLinkedNode nextNode = headNode;
         for (int i = 0; i <= index; i++) {
             returnElement = nextNode.getElement();
             nextNode = nextNode.getNextNode();
@@ -31,12 +55,12 @@ public class IntLinkedList implements IntList {
 
     @Override
     public int set(int index, int element) {
-        IntLinkedNode nextNode;
         int sizeList = size();
         if (sizeList == 0 || index >= sizeList || index < 0) {
             throw new IllegalArgumentException("This element does not exist or there is no element at this index");
         }
         int returnElement = get(index);
+        IntLinkedNode nextNode;
         nextNode = headNode;
         for (int i = 0; i <= index; i++) {
             if (i == index) {
@@ -50,8 +74,7 @@ public class IntLinkedList implements IntList {
 
     @Override
     public int size() {
-        IntLinkedNode nextNode;
-        nextNode = headNode;
+        IntLinkedNode nextNode = headNode;
         int count = 0;
         while (nextNode != null) {
             count++;
@@ -62,15 +85,13 @@ public class IntLinkedList implements IntList {
 
     @Override
     public void add(int element) {
-        IntLinkedNode nextNode;
         IntLinkedNode newNode = new IntLinkedNode();
         newNode.setElement(element);
-
-        nextNode = headNode;
 
         if (headNode == null) {
             headNode = newNode;
         } else {
+            IntLinkedNode nextNode = headNode;
             while (nextNode.getNextNode() != null) {
                 nextNode = nextNode.getNextNode();
             }
@@ -80,19 +101,18 @@ public class IntLinkedList implements IntList {
 
     @Override
     public int remove(int index) {
-        IntLinkedNode nextNode = new IntLinkedNode();
         int sizeList = size();
         int deleteElement = 0;
 
         if (sizeList == 0 || index >= sizeList || index < 0) {
             throw new IllegalArgumentException("List is empty or there is no element at this index");
         }
-        if (headNode == nextNode) {
+        if (headNode == null) {
             deleteElement = headNode.getElement();
             headNode = null;
-            nextNode = null;
             return deleteElement;
         }
+        IntLinkedNode nextNode;
         nextNode = headNode;
         if (index == 0) {
             deleteElement = nextNode.getElement();
@@ -103,7 +123,7 @@ public class IntLinkedList implements IntList {
         for (int i = 0; i <= index; i++) {
             if (i + 1 == index) {
                 deleteElement = nextNode.getNextNode().getElement();
-                nextNode.setNextNode(nextNode.getNextNode().getNextNode());             //!!!!!!!!!!!
+                nextNode.setNextNode(nextNode.getNextNode().getNextNode());
                 break;
             }
             nextNode = nextNode.getNextNode();
@@ -113,11 +133,9 @@ public class IntLinkedList implements IntList {
 
     @Override
     public int lastIndexOf(int element) {
-        IntLinkedNode nextNode = new IntLinkedNode();
         int sizeList = size();
-        nextNode = headNode;
         int returnIndex = -1;
-
+        IntLinkedNode nextNode = headNode;
         for (int i = 0; i < sizeList; i++) {
             if (nextNode.getElement() == element) {
                 returnIndex = i;
