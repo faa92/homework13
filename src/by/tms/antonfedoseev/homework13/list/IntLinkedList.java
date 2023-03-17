@@ -81,46 +81,35 @@ public class IntLinkedList implements IntList {
 
     @Override
     public int remove(int index) {
-        int sizeList = size();
-        int deleteElement = 0;
-
-        if (sizeList == 0 || index >= sizeList || index < 0) {
-            throw new IllegalArgumentException("List is empty or there is no element at this index");
-        }
         if (headNode == null) {
-            deleteElement = headNode.getElement();
-            headNode = null;
-            return deleteElement;
+            throw new IndexOutOfBoundsException();
         }
-        IntLinkedNode nextNode;
-        nextNode = headNode;
         if (index == 0) {
-            deleteElement = nextNode.getElement();
-            nextNode = nextNode.getNextNode();
-            headNode = nextNode;
-            return deleteElement;
-        }
-        for (int i = 0; i <= index; i++) {
-            if (i + 1 == index) {
-                deleteElement = nextNode.getNextNode().getElement();
-                nextNode.setNextNode(nextNode.getNextNode().getNextNode());
-                break;
+            int remove = headNode.getElement();
+            headNode = headNode.getNextNode();
+            return remove;
+        } else {
+            IntLinkedNode preRemovedNode = getNode(index - 1);
+            IntLinkedNode removedNode = preRemovedNode.getNextNode();
+            if (removedNode == null) {
+                throw new IndexOutOfBoundsException();
             }
-            nextNode = nextNode.getNextNode();
+            preRemovedNode.setNextNode(removedNode.getNextNode());
+            return removedNode.getElement();
         }
-        return deleteElement;
     }
 
     @Override
     public int lastIndexOf(int element) {
-        int sizeList = size();
         int returnIndex = -1;
-        IntLinkedNode nextNode = headNode;
-        for (int i = 0; i < sizeList; i++) {
-            if (nextNode.getElement() == element) {
+        IntLinkedNode node = headNode;
+        int i = 0;
+        while (node != null) {
+            if (node.getElement() == element) {
                 returnIndex = i;
             }
-            nextNode = nextNode.getNextNode();
+            node = node.getNextNode();
+            i++;
         }
         return returnIndex;
     }

@@ -37,7 +37,7 @@ public class HomeWork18 {
                     int index = sc.nextInt();
                     System.out.print("Enter element: ");
                     int element = sc.nextInt();
-                    System.out.print("Element [" + list.set(index, element) + "]");
+                    System.out.print("Element [" + list.set(index, element) + "]" + "\n");
                 }
                 case 4 -> {
                     System.out.println(list.size());
@@ -50,7 +50,7 @@ public class HomeWork18 {
                 case 6 -> {
                     System.out.print("Enter index of element to remove");
                     int index = sc.nextInt();
-                    System.out.print("Element [" + list.remove(index) + "] was removed");
+                    System.out.println("Element [" + list.remove(index) + "] was removed");
                     System.out.println(list.toString());
                 }
                 case 7 -> {
