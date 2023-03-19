@@ -1,13 +1,13 @@
 package by.tms.antonfedoseev;
 
-import by.tms.antonfedoseev.homework13.list.IntList;
+import by.tms.antonfedoseev.homework13.list.IntArrayList;
 
 import java.util.Scanner;
 
 public class HomeWork13 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        IntList list = new IntList(new int[]{1, 9, 3, 6, 5, 4, 7, 8, 2, 10});
+        IntArrayList list = new IntArrayList(new int[]{1, 9, 3, 6, 5, 4, 7, 8, 2, 10});
         do {
             System.out.println("\n" + """
                     1. toString()
