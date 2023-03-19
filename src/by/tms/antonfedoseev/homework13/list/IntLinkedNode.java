@@ -1,6 +1,6 @@
 package by.tms.antonfedoseev.homework13.list;
 
-public class IntLinkedNode {
+public class IntLinkedNode extends IntLinkedList {
     private int element;
     private IntLinkedNode nextNode;
 

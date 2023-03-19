@@ -1,5 +1,7 @@
 package by.tms.antonfedoseev.homework13.list;
 
+import java.util.Iterator;
+
 public class IntLinkedList implements IntList {
     private IntLinkedNode headNode;
 
@@ -114,4 +116,8 @@ public class IntLinkedList implements IntList {
         return returnIndex;
     }
 
+    @Override
+    public Iterator<Integer> iterator() {
+        return null;
+    }
 }
