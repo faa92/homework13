@@ -9,6 +9,10 @@ public class IntLinkedList implements IntList {
         headNode = null;
     }
 
+    public Iterator<Integer> nodeIterator() {
+        return new IntLinkedNodeIterator(headNode);
+    }
+
     private IntLinkedNode getNode(int index) {
         if (index < 0) {
             throw new IndexOutOfBoundsException();

@@ -8,12 +8,12 @@ public class IntLinkedNodeIterator implements Iterator<Integer> {
 
 
     public IntLinkedNodeIterator(IntLinkedNode headNode) {
-        currentNode = headNode;
+       this.currentNode = headNode;
     }
 
     @Override
     public boolean hasNext() {
-        if (currentNode.getNextNode() != null) return true;
+        if (this.currentNode.getNextNode() != null) return true;
         return false;
     }
 

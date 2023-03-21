@@ -20,11 +20,6 @@ public class IntArrayList implements IntList {
     }
 
     @Override
-    public Iterator<Integer> iterator() {
-        return new IntLinkedNodeIterator(this);
-    }
-
-    @Override
     public String toString() {
         return Arrays.toString(intArray);
     }
