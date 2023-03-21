@@ -1,8 +1,6 @@
 package by.tms.antonfedoseev;
 
-import by.tms.antonfedoseev.homework13.list.IntArrayList;
-import by.tms.antonfedoseev.homework13.list.IntLinkedList;
-import by.tms.antonfedoseev.homework13.list.IntListIndexIterator;
+import by.tms.antonfedoseev.homework13.list.*;
 
 import java.util.Scanner;
 
@@ -68,6 +66,15 @@ public class HomeWork18 {
                     while (arrayIterator.hasNext()) {
                         Integer index = arrayIterator.next();
                         System.out.println(index.toString());
+                    }
+                }
+                case 9 -> {
+                    IntLinkedNode nodeList = new IntLinkedNode();
+                    IntLinkedNodeIterator nodeIterator = new IntLinkedNodeIterator(nodeList);
+                    while (nodeIterator.hasNext()) {
+                        Integer node = nodeIterator.next();
+                        System.out.println(nodeList.getElement());
+
                     }
 
                 }
