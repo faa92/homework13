@@ -9,7 +9,8 @@ public class IntLinkedList implements IntList {
         headNode = null;
     }
 
-    public Iterator<Integer> nodeIterator() {
+    @Override
+    public Iterator<Integer> iterator() {
         return new IntLinkedNodeIterator(headNode);
     }
 
@@ -118,10 +119,5 @@ public class IntLinkedList implements IntList {
             i++;
         }
         return returnIndex;
-    }
-
-    @Override
-    public Iterator<Integer> iterator() {
-        return null;
     }
 }

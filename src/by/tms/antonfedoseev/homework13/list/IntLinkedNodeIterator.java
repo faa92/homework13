@@ -7,8 +7,8 @@ public class IntLinkedNodeIterator implements Iterator<Integer> {
     private IntLinkedNode currentNode;
 
 
-    public IntLinkedNodeIterator(IntLinkedNode headNode) {
-       this.currentNode = headNode;
+    public IntLinkedNodeIterator(IntLinkedNode currentNode) {
+        this.currentNode = currentNode;
     }
 
     @Override

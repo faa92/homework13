@@ -1,13 +1,16 @@
 package by.tms.antonfedoseev;
 
-import by.tms.antonfedoseev.homework13.list.*;
+import by.tms.antonfedoseev.homework13.list.IntArrayList;
+import by.tms.antonfedoseev.homework13.list.IntLinkedList;
 
+import java.util.Iterator;
 import java.util.Scanner;
 
 public class HomeWork18 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         IntLinkedList list = new IntLinkedList();
+        IntArrayList arrList = new IntArrayList(new int[]{1, 9, 3, 6, 5, 4, 7, 8, 2, 10});
         do {
             System.out.println("""
                                         
@@ -27,56 +30,58 @@ public class HomeWork18 {
             switch (task) {
                 case 1 -> {
                     System.out.println(list);
+                    System.out.println(arrList);
                 }
                 case 2 -> {
                     System.out.print("Enter new element: ");
                     int element = sc.nextInt();
                     list.add(element);
-                    System.out.println(list);
+                    System.out.println("linkedList: " + list);
+                    arrList.add(element);
+                    System.out.println("arrList: " + arrList);
                 }
                 case 3 -> {
                     System.out.print("Enter index of element: ");
                     int index = sc.nextInt();
                     System.out.print("Enter element: ");
                     int element = sc.nextInt();
-                    System.out.print("Element [" + list.set(index, element) + "]" + "\n");
+                    System.out.print("Element linkedList [" + list.set(index, element) + "]" + "\n");
+                    System.out.print("Element arrList [" + arrList.set(index, element) + "]" + "\n");
                 }
                 case 4 -> {
-                    System.out.println(list.size());
+                    System.out.println("Size linkedList: " + list.size());
+                    System.out.println("Size arrList " + arrList.size());
                 }
                 case 5 -> {
                     System.out.print("Enter index of element: ");
                     int index = sc.nextInt();
-                    System.out.println(list.get(index));
+                    System.out.println("linkedList: " + list.get(index));
+                    System.out.println("arrList: " + arrList.get(index));
                 }
                 case 6 -> {
                     System.out.print("Enter index of element to remove");
                     int index = sc.nextInt();
-                    System.out.println("Element [" + list.remove(index) + "] was removed");
-                    System.out.println(list);
+                    System.out.println("Element linkedList [" + list.remove(index) + "] was removed");
+                    System.out.println("linkedList: " + list);
+                    System.out.println("arrList: " + arrList);
                 }
                 case 7 -> {
                     System.out.print("Enter element: ");
                     int element = sc.nextInt();
-                    System.out.println(list.lastIndexOf(element));
+                    System.out.println("linkedList: " + list.lastIndexOf(element));
+                    System.out.println("arrList: " + arrList.lastIndexOf(element));
                 }
                 case 8 -> {
-                    IntArrayList listForIndexIterator = new IntArrayList(new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10});
-                    IntListIndexIterator arrayIterator = new IntListIndexIterator(listForIndexIterator);
-                    while (arrayIterator.hasNext()) {
-                        Integer index = arrayIterator.next();
-                        System.out.println(index.toString());
+                    Iterator<Integer> arrayIterator = arrList.iterator();
+                    for (Integer index : arrList) {
+                        System.out.println("Element arrList: " + index);
                     }
                 }
                 case 9 -> {
-                    IntLinkedNode nodeList = new IntLinkedNode();
-                    IntLinkedNodeIterator nodeIterator = new IntLinkedNodeIterator(nodeList);
-                    while (nodeIterator.hasNext()) {
-                        Integer node = nodeIterator.next();
-                        System.out.println(nodeList.getElement());
-
+                    Iterator<Integer> nodeIterator = list.iterator();
+                    for (Integer node : list) {
+                        System.out.println("Element linkedList: " + node);
                     }
-
                 }
                 case 0 -> {
                     return;

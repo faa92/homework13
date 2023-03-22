@@ -4,8 +4,8 @@ import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 public class IntListIndexIterator implements Iterator<Integer> {
-    private IntList list;   // список который обходит итератор
-    private int i;         // текущий индекс во время обхода
+    private IntList list;
+    private int i;
 
     public IntListIndexIterator(IntList list) {
         this.list = list;
@@ -13,7 +13,7 @@ public class IntListIndexIterator implements Iterator<Integer> {
 
     @Override
     public boolean hasNext() {
-        return i < list.size();
+        return i <= list.size();
     }
 
     @Override
