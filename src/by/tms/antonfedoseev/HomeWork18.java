@@ -20,8 +20,7 @@ public class HomeWork18 {
                     5. get element
                     6. remove element
                     7. lastIndexOf list
-                    8. HW 20 Index Iterator
-                    9. HW 20 Node Iterator
+                    8. HW 20 Iterator
                     0. Exit \n""");
             System.out.print("Choose task: ");
             int task = scanner.nextInt();
@@ -75,8 +74,6 @@ public class HomeWork18 {
                     for (Integer index : arrList) {
                         System.out.println("Element arrList: " + index);
                     }
-                }
-                case 9 -> {
                     Iterator<Integer> nodeIterator = list.iterator();
                     for (Integer node : list) {
                         System.out.println("Element linkedList: " + node);
