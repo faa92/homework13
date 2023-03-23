@@ -1,6 +1,7 @@
 package by.tms.antonfedoseev.homework13.list;
 
 import java.util.Arrays;
+import java.util.Iterator;
 
 public class IntArrayList implements IntList {
     private int[] intArray;
@@ -11,6 +12,11 @@ public class IntArrayList implements IntList {
 
     public IntArrayList(int[] arr) {
         intArray = Arrays.copyOf(arr, arr.length);
+    }
+
+    @Override
+    public Iterator<Integer> iterator() {
+        return new IntListIndexIterator(this);
     }
 
     @Override
