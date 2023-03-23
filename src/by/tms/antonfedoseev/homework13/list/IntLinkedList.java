@@ -8,12 +8,10 @@ public class IntLinkedList implements IntList {
     public IntLinkedList() {
         headNode = null;
     }
-
     @Override
     public Iterator<Integer> iterator() {
         return new IntLinkedNodeIterator(headNode);
     }
-
     private IntLinkedNode getNode(int index) {
         if (index < 0) {
             throw new IndexOutOfBoundsException();
@@ -29,7 +27,6 @@ public class IntLinkedList implements IntList {
         }
         return node;
     }
-
     @Override
     public String toString() {
         if (headNode == null) {
@@ -43,14 +40,11 @@ public class IntLinkedList implements IntList {
         }
         return builder.append(node.getElement()).append("]").toString();
     }
-
-
     @Override
     public int get(int index) {
         IntLinkedNode node = getNode(index);
         return node.getElement();
     }
-
     @Override
     public int set(int index, int element) {
         IntLinkedNode node = getNode(index);
@@ -58,7 +52,6 @@ public class IntLinkedList implements IntList {
         node.setElement(element);
         return returnElement;
     }
-
     @Override
     public int size() {
         IntLinkedNode nextNode = headNode;
@@ -69,7 +62,6 @@ public class IntLinkedList implements IntList {
         }
         return count;
     }
-
     @Override
     public void add(int element) {
         IntLinkedNode newNode = new IntLinkedNode();
@@ -85,7 +77,6 @@ public class IntLinkedList implements IntList {
             nextNode.setNextNode(newNode);
         }
     }
-
     @Override
     public int remove(int index) {
         if (headNode == null) {
@@ -105,7 +96,6 @@ public class IntLinkedList implements IntList {
             return removedNode.getElement();
         }
     }
-
     @Override
     public int lastIndexOf(int element) {
         int returnIndex = -1;

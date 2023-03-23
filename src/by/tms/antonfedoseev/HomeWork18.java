@@ -5,12 +5,11 @@ import by.tms.antonfedoseev.homework13.list.IntLinkedList;
 
 import java.util.Iterator;
 import java.util.Scanner;
-
 public class HomeWork18 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         IntLinkedList list = new IntLinkedList();
-        IntArrayList arrList = new IntArrayList(new int[]{1, 9, 3, 6, 5, 4, 7, 8, 2, 10});
+        IntArrayList arrList = new IntArrayList(new int[0]);
         do {
             System.out.println("""
                                         

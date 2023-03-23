@@ -13,7 +13,7 @@ public class IntListIndexIterator implements Iterator<Integer> {
 
     @Override
     public boolean hasNext() {
-        return i <= list.size();
+        return i < list.size();
     }
 
     @Override
